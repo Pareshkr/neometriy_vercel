@@ -11,6 +11,7 @@ import socketIOClient from "socket.io-client";
 import axios from "axios";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import useWebSocket, { ReadyState } from "react-use-websocket";
+import io from "socket.io-client";
 
 export default function DetectedResult() {
   const [socketUrl, setSocketUrl] = useState("ws://127.0.0.1:9990/get_results");
@@ -76,7 +77,22 @@ export default function DetectedResult() {
   // console.log("imageData", byteArray)
   // const imageData =`data:image/jpeg;base64,${split_img}`
 
-  return (
+  const SERVER = "http://127.0.0.1:9990/get_results";
+  var socket = io(SERVER);
+  const [lbhData,setLbhData] = useState(false)
+
+  useEffect(() => {
+    socket.on("get_results",(data) => {
+      // console.log("counters",data)
+      setLbhData(data)
+    
+    })
+    }, [socket]);
+
+    console.log("lbhData", lbhData)
+
+
+  return ( 
     <>
       <div className="w-2/5 h-full flex flex-col justify-between">
         <div className="w-full h-12 shadow-md rounded-md bg-white font-black flex justify-around">
