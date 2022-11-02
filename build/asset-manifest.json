@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.86aa57ff.css",
+    "main.js": "/static/js/main.ddfd1d42.js",
+    "static/js/787.4893a771.chunk.js": "/static/js/787.4893a771.chunk.js",
+    "static/media/D6.jpg": "/static/media/D6.5a42f48525ea5b96ad71.jpg",
+    "static/media/D2.jpg": "/static/media/D2.a657e5d05b404112c2d4.jpg",
+    "static/media/D7.jpg": "/static/media/D7.7a3895166ee1d235662c.jpg",
+    "static/media/D18.jpg": "/static/media/D18.91bb862be00c37e5fa1b.jpg",
+    "static/media/D10.jpg": "/static/media/D10.b58b4b1f7a3cb82adaf7.jpg",
+    "static/media/D27.jpg": "/static/media/D27.f9d037d7ebb212ba2e68.jpg",
+    "static/media/D21.jpg": "/static/media/D21.de3e671c70baced7846b.jpg",
+    "static/media/D15.jpg": "/static/media/D15.3882704b24263995e1eb.jpg",
+    "static/media/D1.jpg": "/static/media/D1.f2eb294cf7bd4e2f755f.jpg",
+    "static/media/D0.jpg": "/static/media/D0.259bc2c7abffe969eb64.jpg",
+    "static/media/D23.jpg": "/static/media/D23.39861302fce010a9f6f8.jpg",
+    "static/media/NeoPhyte_logo.gif": "/static/media/NeoPhyte_logo.8bb14bdf918190e8c628.gif",
+    "static/media/NeoPhyte_logo_white.gif": "/static/media/NeoPhyte_logo_white.d943dca2641b8ea3b179.gif",
+    "static/media/D19.jpg": "/static/media/D19.50bab08c5866549fe733.jpg",
+    "static/media/demoimage.jpg": "/static/media/demoimage.5564b363118cddd58aa7.jpg",
+    "index.html": "/index.html",
+    "main.86aa57ff.css.map": "/static/css/main.86aa57ff.css.map",
+    "main.ddfd1d42.js.map": "/static/js/main.ddfd1d42.js.map",
+    "787.4893a771.chunk.js.map": "/static/js/787.4893a771.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86aa57ff.css",
+    "static/js/main.ddfd1d42.js"
+  ]
+}
