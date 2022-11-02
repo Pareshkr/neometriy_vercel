@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Logo from "../image/NeoPhyte_logo_white.gif";
+// import axios from "axios";
+// import Logo from "../image/NeoPhyte_logo_white.gif";
 export default function Video() {
 
-    const url = "http://127.0.0.1:9990";
-    const [camera, setCamera] = useState(false);
+    // const url = "http://127.0.0.1:9990";
+    // const [camera, setCamera] = useState(false);
 
     // useEffect(() => {
     //   async function getCamera() {
@@ -39,7 +39,7 @@ export default function Video() {
         <div className="bg-black grid w-full h-full rounded-lg">
           {/* <div></div> */}
           <div className="w-12/12 m-auto">
-            <video
+            <iframe
               width="800"
               height="600"
               margin="auto"
