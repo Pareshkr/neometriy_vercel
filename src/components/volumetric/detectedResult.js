@@ -188,9 +188,11 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className="w-3/5 h-full flex justify-around">
+              {lbhData && (
                 <span className="self-center font-semibold text-large text-white">
-                  {split_w}
+                  {lbhData.data[3].toFixed(2)}cm
                 </span>
+                )}
               </div>
             </div>
             <div className="m-2.5 h-1 "></div>
