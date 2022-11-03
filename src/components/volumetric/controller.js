@@ -19,7 +19,7 @@ export default function Controller() {
 
   const onSubmitStop = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:9990/camera/preview", {
+      const res = await axios.get("http://127.0.0.1:9990/camera/stop", {
         headers: {
           Accept: "application/json",
         },

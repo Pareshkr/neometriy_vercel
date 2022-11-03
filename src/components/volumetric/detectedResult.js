@@ -14,7 +14,7 @@ import useWebSocket, { ReadyState } from "react-use-websocket";
 import io from "socket.io-client";
 
 export default function DetectedResult() {
-  const [socketUrl, setSocketUrl] = useState("ws://127.0.0.1:9990/get_results");
+  const [socketUrl, setSocketUrl] = useState();
   const [messageHistory, setMessageHistory] = useState([]);
 
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
@@ -77,17 +77,47 @@ export default function DetectedResult() {
   // console.log("imageData", byteArray)
   // const imageData =`data:image/jpeg;base64,${split_img}`
 
-  const SERVER = "http://127.0.0.1:9990/get_results";
-  var socket = io(SERVER);
+  // const SERVER = "http://127.0.0.1:9990";
+  // var socket = io(SERVER);
+  // console.log("socket", socket)
   const [lbhData,setLbhData] = useState(false)
 
+
+
+
   useEffect(() => {
-    socket.on("get_results",(data) => {
-      // console.log("counters",data)
-      setLbhData(data)
+    const socket = io("http://127.0.0.1:9990", {
+      transports: ["websocket"],
+      cors: {
+        origin: "http://localhost:3000/",
+      },
+    });
+
+ 
+      socket.emit("message", "wss");
+  
+
     
-    })
-    }, [socket]);
+    socket.on("get_results", (data) => {
+      console.log(data);
+      setLbhData(data)
+    });
+
+  },[])
+  
+    // socket.on("connection",(data) => {
+    //   console.log("connection",data)
+    //   // setLbhData(data)
+    
+    // })
+
+    // useEffect(() => {
+    //     socket.on("get_results",(data) => {
+    //       console.log("get_results",data)
+    //       setLbhData(data)
+    //     })
+    // },[])
+  
 
     console.log("lbhData", lbhData)
 
@@ -140,9 +170,11 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className="w-3/5 h-full flex justify-around">
+                {lbhData && (
                 <span className="self-center font-semibold text-large text-white">
-                  {split_h * split_l * split_b}cm<sup>3</sup>
+                 {lbhData.data[0] * lbhData.data[1] * lbhData.data[2].toFixed(2)}
                 </span>
+                )}
               </div>
             </div>
 
@@ -175,9 +207,11 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className=" w-2/5 h-full flex justify-around">
+                {lbhData && (
                 <span className="self-center font-semibold text-large text-white">
-                  {split_l}cm
+                  {lbhData.data[0].toFixed(2)}cm
                 </span>
+                )}
               </div>
             </div>
 
@@ -191,9 +225,11 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className=" w-2/5 h-full flex justify-around">
+              {lbhData && (
                 <span className="self-center font-semibold text-large text-white">
-                  {split_b}cm
+                  {lbhData.data[1].toFixed(2)}cm
                 </span>
+                )}
               </div>
             </div>
             <div className="m-2.5 h-1/4 flex flex-row space-x-2 rounded-md shadow-md bg-gray-600 ">
@@ -206,9 +242,11 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className=" w-2/5 h-full flex justify-around">
+              {lbhData && (
                 <span className="self-center font-semibold text-large text-white">
-                  {split_h}cm
+                  {lbhData.data[2].toFixed(2)}cm
                 </span>
+                )}
               </div>
             </div>
             <div className="m-2.5 h-2 "></div>
