@@ -14,7 +14,7 @@ import useWebSocket, { ReadyState } from "react-use-websocket";
 import io from "socket.io-client";
 
 export default function DetectedResult() {
-  const [socketUrl, setSocketUrl] = useState("ws://127.0.0.1:9990/get_results");
+  const [socketUrl, setSocketUrl] = useState();
   const [messageHistory, setMessageHistory] = useState([]);
 
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
@@ -77,17 +77,26 @@ export default function DetectedResult() {
   // console.log("imageData", byteArray)
   // const imageData =`data:image/jpeg;base64,${split_img}`
 
-  const SERVER = "http://127.0.0.1:9990/get_results";
-  var socket = io(SERVER);
+  // const SERVER = "http://127.0.0.1:9990/get_results";
+  // var socket = io(SERVER);
   const [lbhData,setLbhData] = useState(false)
 
-  useEffect(() => {
-    socket.on("get_results",(data) => {
-      // console.log("counters",data)
-      setLbhData(data)
-    
-    })
-    }, [socket]);
+ useEffect(() => {
+ const socket = io("http://127.0.0.1:9990", {
+  transports: ["websocket"],
+  cors: {
+    origin: "http://localhost:3000/",
+  },
+ });
+
+ socket.on("connect", (data) => {
+  console.log("data");
+ })
+
+ socket.on("get_result", (data) => {
+  console.log("data", data)
+ })
+ }, [])
 
     console.log("lbhData", lbhData)
 
