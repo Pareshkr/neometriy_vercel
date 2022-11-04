@@ -80,10 +80,7 @@ export default function DetectedResult() {
   // const SERVER = "http://127.0.0.1:9990";
   // var socket = io(SERVER);
   // console.log("socket", socket)
-  const [lbhData,setLbhData] = useState(false)
-
-
-
+  const [lbhData, setLbhData] = useState(false);
 
   useEffect(() => {
     const socket = io("http://127.0.0.1:9990", {
@@ -93,38 +90,34 @@ export default function DetectedResult() {
       },
     });
 
- 
-      socket.emit("message", "wss");
-  
+    socket.emit("message", "wss");
 
-    
     socket.on("get_results", (data) => {
       console.log(data);
-      setLbhData(data)
+      setLbhData(data);
     });
+  }, []);
 
-  },[])
-  
-    // socket.on("connection",(data) => {
-    //   console.log("connection",data)
-    //   // setLbhData(data)
-    
-    // })
+  // socket.on("connection",(data) => {
+  //   console.log("connection",data)
+  //   // setLbhData(data)
 
-    // useEffect(() => {
-    //     socket.on("get_results",(data) => {
-    //       console.log("get_results",data)
-    //       setLbhData(data)
-    //     })
-    // },[])
-  
+  // })
 
-    console.log("lbhData", lbhData)
+  // useEffect(() => {
+  //     socket.on("get_results",(data) => {
+  //       console.log("get_results",data)
+  //       setLbhData(data)
+  //     })
+  // },[])
 
+  console.log("lbhData", lbhData);
+  const cloneLbh = { ...lbhData };
+  console.log("cloneLbh", cloneLbh);
 
-  return ( 
+  return (
     <>
-      <div className="w-2/5 h-full flex flex-col justify-between">
+      <div className="w-2/5 h-full flex flex-col space-y-3">
         <div className="w-full h-12 shadow-md rounded-md bg-white font-black flex justify-around">
           <div className="w-full h-full justify-center font-extrabold text-2xl flex">
             <span className="self-center pl-2 text-gray-700 tracking-wider">
@@ -132,15 +125,173 @@ export default function DetectedResult() {
             </span>
           </div>
         </div>
-        <div className="rounded-md shadow-md h-3/6">
-          <div className="w-full m-auto h-full shadow-md rounded-md bg-white">
-            
-            {/* <img
-              className="h-full w-full"
-              src={base64Image}
-              alt="no img found"
-            /> */}
-          </div>
+        <div className="w-full rounded-md shadow-md h-4/6 overflow-auto">
+          <table className="w-full sm:bg-white border rounded-lg">
+            <thead className="w-full h-10 bg-violet-300 text-black font-extrabold text-lg border-t-2 border-b-2 border-violet-600 ">
+              <tr className="">
+                <th className="">Class</th>
+                <th className="">Length</th>
+                <th className="">Breadth</th>
+                <th className="">Height</th>
+                <th className="">Weight</th>
+                <th className="">Volume</th>
+              </tr>
+            </thead>
+            <tbody className="w-full h- text-center font-semibold divide-y overflow-y-auto">
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              {/* <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr> */}
+              {/* <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr>
+              <tr>
+                <td className="p-2">9873</td>
+                <td>937509</td>
+                <td>2o7</td>
+                <td>082055</td>
+                <td>98287</td>
+                <td>98239732</td>
+              </tr> */}
+            </tbody>
+          </table>
         </div>
         <div className="h-2/6 flex flex-row space-x-3">
           <div className="w-full h-full bg-white rounded-md shadow-md flex flex-col ">
@@ -171,9 +322,11 @@ export default function DetectedResult() {
               </div>
               <div className="w-3/5 h-full flex justify-around">
                 {lbhData && (
-                <span className="self-center font-semibold text-large text-white">
-                 {lbhData.data[0] * lbhData.data[1] * lbhData.data[2].toFixed(2)}
-                </span>
+                  <span className="self-center font-semibold text-large text-white">
+                    {lbhData.data[0] *
+                      lbhData.data[1] *
+                      lbhData.data[2].toFixed(2)}
+                  </span>
                 )}
               </div>
             </div>
@@ -188,10 +341,10 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className="w-3/5 h-full flex justify-around">
-              {lbhData && (
-                <span className="self-center font-semibold text-large text-white">
-                  {lbhData.data[3].toFixed(2)}cm
-                </span>
+                {lbhData && (
+                  <span className="self-center font-semibold text-large text-white">
+                    {lbhData.data[3].toFixed(2)}cm
+                  </span>
                 )}
               </div>
             </div>
@@ -210,9 +363,9 @@ export default function DetectedResult() {
               </div>
               <div className=" w-2/5 h-full flex justify-around">
                 {lbhData && (
-                <span className="self-center font-semibold text-large text-white">
-                  {lbhData.data[0].toFixed(2)}cm
-                </span>
+                  <span className="self-center font-semibold text-large text-white">
+                    {lbhData.data[0].toFixed(2)}cm
+                  </span>
                 )}
               </div>
             </div>
@@ -227,10 +380,10 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className=" w-2/5 h-full flex justify-around">
-              {lbhData && (
-                <span className="self-center font-semibold text-large text-white">
-                  {lbhData.data[1].toFixed(2)}cm
-                </span>
+                {lbhData && (
+                  <span className="self-center font-semibold text-large text-white">
+                    {lbhData.data[1].toFixed(2)}cm
+                  </span>
                 )}
               </div>
             </div>
@@ -244,10 +397,10 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className=" w-2/5 h-full flex justify-around">
-              {lbhData && (
-                <span className="self-center font-semibold text-large text-white">
-                  {lbhData.data[2].toFixed(2)}cm
-                </span>
+                {lbhData && (
+                  <span className="self-center font-semibold text-large text-white">
+                    {lbhData.data[2].toFixed(2)}cm
+                  </span>
                 )}
               </div>
             </div>

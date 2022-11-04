@@ -185,7 +185,7 @@ export default function ClassVolume(props) {
                           <th className="">Length</th>
                           <th className="">Breadth</th>
                           <th className="">Height</th>
-
+                          <th className="">Weight</th>
                           <th className="">Volume</th>
                         </tr>
                       </thead>
@@ -197,7 +197,7 @@ export default function ClassVolume(props) {
                               <td>{val.total_l.toFixed(2)}</td>
                               <td>{val.total_b.toFixed(2)}</td>
                               <td>{val.total_h.toFixed(2)}</td>
-
+                              <td>84659</td>
                               <td>
                                 {(
                                   val.total_l *
@@ -214,7 +214,7 @@ export default function ClassVolume(props) {
                               <td>0</td>
                               <td>0</td>
                               <td>0</td>
-
+                              <td>0</td>
                               <td>0</td>
                             </tr>
                           </>
