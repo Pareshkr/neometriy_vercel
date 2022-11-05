@@ -81,6 +81,7 @@ export default function DetectedResult() {
   // var socket = io(SERVER);
   // console.log("socket", socket)
   const [lbhData, setLbhData] = useState(false);
+  const [cloneLbh, setCloneLbh] = useState([])
 
   useEffect(() => {
     const socket = io("http://127.0.0.1:9990", {
@@ -95,6 +96,8 @@ export default function DetectedResult() {
     socket.on("get_results", (data) => {
       console.log(data);
       setLbhData(data);
+      setCloneLbh(data.data)
+     
     });
   }, []);
 
@@ -112,8 +115,22 @@ export default function DetectedResult() {
   // },[])
 
   console.log("lbhData", lbhData);
-  const cloneLbh = { ...lbhData };
-  console.log("cloneLbh", cloneLbh);
+  
+  const copyofCloneArray = [...cloneLbh];
+
+  var allData = [];
+  allData.unshift(copyofCloneArray)
+  
+
+   console.log("cloneLbh",allData); 
+
+   
+
+ 
+
+  // console.log(result)
+
+
 
   return (
     <>
