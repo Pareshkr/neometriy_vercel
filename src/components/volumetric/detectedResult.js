@@ -360,7 +360,7 @@ export default function DetectedResult() {
               <div className="w-3/5 h-full flex justify-around">
                 {lbhData && (
                   <span className="self-center font-semibold text-large text-white">
-                    {lbhData.data[3].toFixed(2)}cm
+                    {lbhData.data[3].toFixed(2)}kg
                   </span>
                 )}
               </div>
