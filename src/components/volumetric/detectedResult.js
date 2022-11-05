@@ -14,64 +14,48 @@ import useWebSocket, { ReadyState } from "react-use-websocket";
 import io from "socket.io-client";
 
 export default function DetectedResult() {
-  const [socketUrl, setSocketUrl] = useState();
-  const [messageHistory, setMessageHistory] = useState([]);
+  // const [socketUrl, setSocketUrl] = useState("ws://127.0.0.1:9990/get_results");
+  // const [messageHistory, setMessageHistory] = useState([]);
 
-  const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
-  // console.log("lastMessage", lastMessage)
+  // const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
+  // // console.log("lastMessage", lastMessage)
 
-  const [response, setReponse] = useState(false);
+  // const [response, setReponse] = useState(false);
+  const [chat, setChat] = useState([]);
 
-  useEffect(() => {
-    if (lastMessage !== null) {
-      setMessageHistory((prev) => prev.concat(lastMessage));
+  // useEffect(() => {
+  //   if (lastMessage !== null) {
+  //     setMessageHistory((prev) => prev.concat(lastMessage));
 
-      // console.log(lastMessage);
-      setReponse(lastMessage);
-    }
-  }, [lastMessage, setMessageHistory]);
+  //     // console.log(lastMessage);
+  //     setReponse(lastMessage);
+  //     // setChat(oldChats =>[lastMessage.data, ...oldChats])
+  //   }
+  // }, [lastMessage, setMessageHistory]);
 
-  let dataResult = "";
+  // let dataResult = "";
+  // // console.log("dhddh",chat)
 
-  if (response) {
-    dataResult = response.data;
-  }
+  // if (response) {
+  //   dataResult = response.data;
+  // }
 
-  const split_lbh_image = dataResult.split("], [");
+  // const arr = ["First item", "Second item", "Third item"];
 
-  const split_lbhw = split_lbh_image[0].split(",");
+  // arr.push(dataResult);
 
-  const split_img = split_lbh_image[1];
-  let image_byte_url = "";
-  if (typeof split_img === "string") {
-    const arr = split_img.split("']]");
+  // let array_image = [];
+  // const split_lbh_image = dataResult;
+  // console.log(split_lbh_image);
+  // array_image.push(split_lbh_image);
 
-    image_byte_url = arr[0];
+  // console.log("array_image", arr);
 
-    // do stuff with arr
-  } else {
-    console.log("str is not a string");
-  }
+  // let months = ["January", "February", "Monday", "Tuesday"];
+  // months.splice(0, 0, "March", "hwdgygdwy");
 
-  // console.log(image_byte_url)
-  var base64Image = `data:image/png;base64,${image_byte_url}`;
-  console.log("base64Image", base64Image);
-
-  // console.log("split_img", split_img.replace("']]", ""))
-
-  // console.log(split_result1)
-
-  const split_l = split_lbhw[0].replace("[[", "");
-  // console.log("split_l", split_l)
-
-  const split_b = split_lbhw[1];
-  // console.log("split_b", split_b)
-
-  const split_h = split_lbhw[2];
-  // console.log("split_h", split_h)
-
-  const split_w = split_lbhw[3];
-  // console.log("split_w", split_w)
+  // console.log(months);
+  // console.log("allDataEntry", allDataEntry);
 
   // const byteArray = img_byte.getBytes("UTF-8");
   // console.log("imageData", byteArray)
@@ -95,6 +79,7 @@ export default function DetectedResult() {
     socket.on("get_results", (data) => {
       console.log(data);
       setLbhData(data);
+      setChat(oldChats =>[data.data, ...oldChats])
     });
   }, []);
 
@@ -111,24 +96,24 @@ export default function DetectedResult() {
   //     })
   // },[])
 
-  console.log("lbhData", lbhData);
-  const cloneLbh = { ...lbhData };
-  console.log("cloneLbh", cloneLbh);
+  // console.log("lbhData", lbhData);
+  // const cloneLbh = { ...lbhData };
+  console.log("cloneLbh", chat);
 
   return (
     <>
-      <div className="w-2/5 h-full flex flex-col space-y-3">
-        <div className="w-full h-12 shadow-md rounded-md bg-white font-black flex justify-around">
-          <div className="w-full h-full justify-center font-extrabold text-2xl flex">
-            <span className="self-center pl-2 text-gray-700 tracking-wider">
+      <div className="w-full h-full flex flex-col space-y-4">
+        <div className="w-full h-12 shadow-md rounded-md bg-slate-500 font-black flex justify-around">
+          <div className="w-full h-full justify-center font-bold text-2xl flex">
+            <span className="self-center pl-2 text-white tracking-wider">
               Analysis
             </span>
           </div>
         </div>
-        <div className="w-full rounded-md shadow-md h-4/6 overflow-auto">
-          <table className="w-full sm:bg-white border rounded-lg">
-            <thead className="w-full h-10 bg-violet-300 text-black font-extrabold text-lg border-t-2 border-b-2 border-violet-600 ">
-              <tr className="">
+        <div className="w-full rounded-md shadow-md h-4/6 bg-white overflow-y-auto">
+          <table className="w-full sm:bg-white border rounded-lg table-auto">
+            <thead className="w-full h-10 bg-emerald-500 text-white font-extrabold text-lg">
+              <tr className="tracking-wider font-semibold">
                 <th className="">Class</th>
                 <th className="">Length</th>
                 <th className="">Breadth</th>
@@ -137,159 +122,217 @@ export default function DetectedResult() {
                 <th className="">Volume</th>
               </tr>
             </thead>
-            <tbody className="w-full h- text-center font-semibold divide-y overflow-y-auto">
+            <tbody className="w-full h- text-center font-semibold divide-y">
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
-              </tr>
-              {/* <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
-              </tr> */}
-              {/* <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
               </tr>
               <tr>
-                <td className="p-2">9873</td>
-                <td>937509</td>
-                <td>2o7</td>
-                <td>082055</td>
-                <td>98287</td>
-                <td>98239732</td>
-              </tr> */}
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
+              </tr>
+              <tr>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
+              </tr>
+              <tr>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
+              </tr>
+              <tr>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
+              </tr>
+              <tr>
+                <td className="p-2">D22</td>
+                <td>28.12 cm</td>
+                <td>19.56 cm</td>
+                <td>8.74 cm</td>
+                <td>4.63 kg</td>
+                <td>
+                  22257.51 cm<sup>3</sup>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>

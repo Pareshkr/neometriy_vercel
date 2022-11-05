@@ -4,10 +4,30 @@ import DialogContent from "@mui/material/DialogContent";
 import { FiMoreHorizontal } from "react-icons/fi";
 import Tippy from "@tippy.js/react";
 import "tippy.js/dist/tippy.css";
+import {
+  TransformWrapper,
+  TransformComponent,
+} from "@kokarn/react-zoom-pan-pinch";
+import D0 from "../image/D0.jpg";
+import D1 from "../image/D1.jpg";
+import D19 from "../image/D19.jpg";
+import D23 from "../image/D23.jpg";
+import D2 from "../image/anomalyDummy/D2.jpg";
+import D6 from "../image/anomalyDummy/D6.jpg";
+import D7 from "../image/anomalyDummy/D7.jpg";
+import D10 from "../image/anomalyDummy/D10.jpg";
+import D15 from "../image/anomalyDummy/D15.jpg";
+import D18 from "../image/anomalyDummy/D18.jpg";
+import D27 from "../image/anomalyDummy/D27.jpg";
 
 export default function ClassVolume(props) {
   const data = props.data;
   console.log("class by volume data ", data);
+
+  let allData = "";
+  // if (data) {
+  //   allData= data.data.box_wise_lbh.map((val) => val)
+  // }
 
   let sortData = "";
   // const [lbhBoxwise, setLbhBoxwise] = useState(false);
@@ -17,142 +37,410 @@ export default function ClassVolume(props) {
     lbhBoxwise = data.data.box_wise_lbh;
   }
 
-  const sortedData = Object.entries(sortData).sort((a, b) => b[1] - a[1]);
-
   // function sortFloat(a,b) { return a - b; }
 
   // const copyShorting =sortData.sort(sortFloat);
 
   // console.log("sortedData", sortData.sort());
-  let largest_volume = "";
-  let largest_box = "";
-  let second_largest = "";
-  let second_Largest_box = "";
-  let third_largest = "";
-  let third_largest_box = "";
-  let fourth_largest = "";
-  let fourth_largest_box = "";
-  let fifth_largest = "";
-  let fifth_largest_box = "";
-  let sixth_largest = "";
-  let sixth_largest_box = "";
-  if (sortedData.length > 0) {
-    largest_volume = sortedData[0][1].totalVolume.toFixed(2);
-    largest_box = sortedData[0][1]._id;
-    second_largest = sortedData[1][1].totalVolume.toFixed(2);
-    second_Largest_box = sortedData[1][1]._id;
-    third_largest = sortedData[2][1].totalVolume.toFixed(2);
-    third_largest_box = sortedData[2][1]._id;
-    // fourth_largest = sortedData[3][1].totalVolume;
-    // fourth_largest_box = sortedData[3][1]._id;
-    // fifth_largest = sortedData[4][1].totalVolume;
-    // fifth_largest_box = sortedData[4][1]._id;
-    // sixth_largest = sortedData[5][1].totalVolume;
-    // sixth_largest_box = sortedData[5][1]._id;
-  }
-  console.log("largest_volume");
 
   const [open, setOpen] = useState(false);
-  const [fullWidth, setFullWidth] = React.useState(true);
-  const [maxWidth, setMaxWidth] = React.useState("sm");
+  const [opened, setOpened] = useState(false);
+
+  const [fullWidth, setFullWidth] = useState(true);
+  const [maxWidth, setMaxWidth] = useState("md");
+
+  const [fullWidths, setFullWidths] = useState(true);
+  const [maxWidths, setMaxWidths] = useState("md");
+
+  const itemData = [
+    {
+      img: D0,
+      class: "D0",
+      time: "17-10-22 11:43",
+      rows: 2,
+      cols: 2,
+      featured: true,
+    },
+    {
+      img: D1,
+      class: "D1",
+      time: "17-10-22 12:15",
+    },
+    {
+      img: D19,
+      class: "D19",
+      time: "17-10-22 13:38",
+    },
+    {
+      img: D23,
+      class: "D23",
+      time: "17-10-22 14:05",
+      cols: 2,
+    },
+  ];
+
+  const allItemData = [
+    {
+      img: D0,
+      class: "D0",
+      time: "17-10-22 11:43",
+    },
+    {
+      img: D1,
+      class: "D1",
+      time: "17-10-22 12:15",
+    },
+    {
+      img: D19,
+      class: "D19",
+      time: "17-10-22 13:38",
+    },
+    {
+      img: D23,
+      class: "D23",
+      time: "17-10-22 14:05",
+    },
+    {
+      img: D2,
+      class: "D2",
+      time: "17-10-22 14:28",
+    },
+    {
+      img: D6,
+      class: "D6",
+      time: "17-10-22 15:19",
+    },
+    {
+      img: D7,
+      class: "D7",
+      time: "17-10-22 15:26",
+    },
+    {
+      img: D10,
+      class: "D10",
+      time: "17-10-22 15:45",
+    },
+    {
+      img: D15,
+      class: "D15",
+      time: "17-10-22 16:06",
+    },
+    {
+      img: D18,
+      class: "D18",
+      time: "17-10-22 16:27",
+    },
+    {
+      img: D23,
+      class: "D23",
+      time: "17-10-22 16:55",
+    },
+    {
+      img: D27,
+      class: "D27",
+      time: "17-10-22 16:59",
+    },
+  ];
+  const [zoomImage, setZoomImage] = useState(0);
+
+  const openCardView = (e, index) => {
+    e.preventDefault();
+    // setCardViewIsActive(!cardViewIsActive);
+    setZoomImage(index);
+    setOpened(true);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
 
+  const handleClickOpened = () => {
+    setOpened(true);
+  };
+  const handleClosed = () => {
+    setOpened(false);
+  };
+
   return (
     <>
-      <div className="w-full h-full rounded-md shadow-md flex flex-col bg-white">
+      <div className="w-full h-full rounded-md shadow-md flex flex-col justify-between bg-white">
         <div className="w-full h-1/6 flex border-b-2">
           <div className="self-center pl-5 text-gray-600 font-semibold text-lg ">
-            Volume by class (cm<sup>3</sup>)
+            Data by class (cm<sup>3</sup>)
           </div>
         </div>
 
         <div className="w-full h-4/6 container overflow-x-auto">
           <div className="container overflow-x-auto">
             <table className="w-full sm:bg-white rounded-lg">
-              <thead className="w-full h-1/6 bg-violet-300 text-black font-extrabold text-lg border-t-2 border-b-2 border-violet-600">
+              <thead className="w-full h-10 bg-violet-500 text-white font-bold text-md tracking-wider">
                 <tr className="">
-                  <th className="">Class</th>
+                  <th className="pl-3">Class</th>
+                  <th className="">Time</th>
+                  <th className="">Length</th>
+                  <th className="">Breadth</th>
+                  <th className="">Height</th>
+                  <th className="">Weight</th>
                   <th className="">Volume</th>
-                  <th className=""></th>
+                  <th className="">Image</th>
                 </tr>
               </thead>
-              <tbody className="text-center font-semibold divide-y">
-                {lbhBoxwise ? (
-                  lbhBoxwise.map((val, id) => (
-                    <tr key={id}>
-                      <td className="p-2">{val._id}</td>
-                      <td>
-                        {(val.total_l * val.total_b * val.total_h).toFixed(2)}
-                      </td>
-                      <td className=" text-blue-600">
-                        <Tippy content={"Click on View more to see more data"}>
-                          <span>
-                            <FiMoreHorizontal />
-                          </span>
-                        </Tippy>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
+              {data ? (
+                <tbody className="text-center font-semibold">
                   <tr>
-                    <td>0</td>
-                    <td>0</td>
-                  </tr>
-                )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[0].class_name}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
 
-                {/* <tr>
-                  <td>{largest_box}</td>
-                  <td>{largest_volume}</td>
-                  <td className=" text-blue-600">
-                    <Tippy content={"Click on View more to see more data"}>
-                      <span>
-                        <FiMoreHorizontal />
-                      </span>
-                    </Tippy>
-                  </td>
-                </tr>
-                <tr className="bg-gray-200">
-                  <td>{second_Largest_box}</td>
-                  <td>{second_largest}</td>
-                  <td className=" text-blue-600">
-                    <Tippy content={"Click on View more to see more data"}>
-                      <span>
-                        <FiMoreHorizontal />
-                      </span>
-                    </Tippy>
-                  </td>
-                </tr>
-                <tr>
-                  <td>{third_largest_box}</td>
-                  <td>{third_largest}</td>
-                  <td className=" text-blue-600">
-                    <Tippy content={"Click on View more to see more data"}>
-                      <span>
-                        <FiMoreHorizontal />
-                      </span>
-                    </Tippy>
-                  </td>
-                </tr> */}
-                {/* <tr className="bg-gray-200">
-                  <td>D25</td>
-                  <td>3464</td>
-                </tr>
-                <tr>
-                  <td>D32</td>
-                  <td>9887</td>
-                </tr>
-                <tr className="bg-gray-200">
-                  <td className="">D27</td>
-                  <td>8957</td>
-                </tr> */}
-              </tbody>
+                    {/* <td>27/10 04:34:08</td> */}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[0].timestamps}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[0].l}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[0].b}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[0].h}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">12</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">1338.48</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        <td className="flex pt-2 justify-center text-blue-600">
+                          <button
+                            type="button"
+                            onClick={handleClickOpened}
+                            className="self-center text-sm text-blue-600 hover:bg-blue-100"
+                          >
+                            show
+                            <hr className="" />
+                          </button>
+                        </td>
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                  </tr>
+
+                  <tr>
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[1].class_name}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {/* <td>27/10 04:34:08</td> */}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[1].timestamps}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[1].l}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[1].b}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[1].h}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">12</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">1338.48</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        <td className="flex pt-2 justify-center text-blue-600">
+                          <button
+                            type="button"
+                            onClick={handleClickOpened}
+                            className="self-center text-sm text-blue-600 hover:bg-blue-100"
+                          >
+                            show
+                            <hr className="" />
+                          </button>
+                        </td>
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                  </tr>
+
+                  <tr>
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[2].class_name}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {/* <td>27/10 04:34:08</td> */}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[2].timestamps}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[2].l}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[2].b}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[2].h}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">12</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">1338.48</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        <td className="flex pt-2 justify-center text-blue-600">
+                          <button
+                            type="button"
+                            onClick={handleClickOpened}
+                            className="self-center text-sm text-blue-600 hover:bg-blue-100"
+                          >
+                            show
+                            <hr className="" />
+                          </button>
+                        </td>
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                  </tr>
+
+                  <tr>
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[3].class_name}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {/* <td>27/10 04:34:08</td> */}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        {data.data.box_wise_lbh[3].timestamps}
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[3].l}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[3].b}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">{data.data.box_wise_lbh[3].h}</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">12</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">1338.48</td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+
+                    {data.data.box_wise_lbh.length > 0 ? (
+                      <td className="p-2">
+                        <td className="flex pt-2 justify-center text-blue-600">
+                          <button
+                            type="button"
+                            onClick={handleClickOpened}
+                            className="self-center text-sm text-blue-600 hover:bg-blue-100"
+                          >
+                            show
+                            <hr className="" />
+                          </button>
+                        </td>
+                      </td>
+                    ) : (
+                      <td className="p-2"></td>
+                    )}
+                  </tr>
+                </tbody>
+              ) : (
+                <>No data available</>
+              )}
             </table>
           </div>
         </div>
@@ -179,31 +467,72 @@ export default function ClassVolume(props) {
                 <div className="w-full h-5/6 container overflow-x-auto">
                   <div className="container overflow-x-auto">
                     <table className="w-full sm:bg-white rounded-lg">
-                      <thead className="w-full h-1/6 bg-violet-300 text-black font-extrabold text-lg border-t-2 border-b-2 border-violet-600">
+                      <thead className="w-full h-10 bg-violet-500 text-white font-bold text-md tracking-wider">
                         <tr className="">
                           <th className="">Class</th>
+                          <th className="">Time</th>
                           <th className="">Length</th>
                           <th className="">Breadth</th>
                           <th className="">Height</th>
                           <th className="">Weight</th>
                           <th className="">Volume</th>
+                          <th className="">image</th>
                         </tr>
                       </thead>
                       <tbody className="text-center font-semibold divide-y">
-                        {lbhBoxwise ? (
-                          lbhBoxwise.map((val, id) => (
-                            <tr key={id}>
-                              <td className="p-2">{val._id}</td>
-                              <td>{val.total_l.toFixed(2)}</td>
-                              <td>{val.total_b.toFixed(2)}</td>
-                              <td>{val.total_h.toFixed(2)}</td>
-                              <td>84659</td>
+                        {data ? (
+                          data.data.box_wise_lbh.map((val, id) => (
+                            <tr
+                              className="odd:bg-white even:bg-slate-200"
+                              key={id}
+                            >
+                              <td className="p-2">{val.class_name}</td>
+                              <td>{val.timestamps}</td>
+                              <td>{val.l.toFixed(2)} cm</td>
+                              <td>{val.b.toFixed(2)} cm</td>
+                              <td>{val.h.toFixed(2)} cm</td>
+                              <td>12 kg</td>
                               <td>
-                                {(
-                                  val.total_l *
-                                  val.total_b *
-                                  val.total_h
-                                ).toFixed(2)}
+                                {(val.l * val.b * val.h).toFixed(2)} cm
+                                <sup>3</sup>
+                              </td>
+                              <td className="flex pt-2 justify-center text-blue-600">
+                                <button
+                                  type="button"
+                                  onClick={handleClickOpened}
+                                  className="self-center text-sm text-blue-600 hover:bg-blue-100"
+                                >
+                                  show
+                                  <hr className="" />
+                                </button>
+                                <Dialog
+                                  fullWidth={fullWidths}
+                                  maxWidth={maxWidths}
+                                  open={opened}
+                                  onClose={handleClosed}
+                                >
+                                  <DialogContent>
+                                    {allItemData ? (
+                                      <TransformWrapper>
+                                        <TransformComponent>
+                                          <img
+                                            className="cursor-pointer "
+                                            src={allItemData[zoomImage].img}
+                                            alt="img not found"
+                                          />
+                                        </TransformComponent>
+                                      </TransformWrapper>
+                                    ) : (
+                                      <>no image found</>
+                                    )}
+                                  </DialogContent>
+                                </Dialog>
+
+                                {/* <Tippy content={"Click on View more to see more data"}>
+                          <div className="self-center">
+                            <FiMoreHorizontal />
+                          </div>
+                        </Tippy> */}
                               </td>
                             </tr>
                           ))
@@ -227,34 +556,29 @@ export default function ClassVolume(props) {
             </DialogContent>
           </Dialog>
         </div>
-        {/* <div className="w-full h-1/5 flex justify-center flex-row hover:bg-gray-100 text-gray-600 font-semibold text-md tracking-wider">
-          <div className="w-1/2 h-full flex justify-between">
-            <div className="w-4/6 self-center pl-5">Class</div>
-            <div className="w-2/6 self-center">D15</div>
-          </div>
-          <div className="w-1/2 self-center text-right pr-5">20467</div>
-        </div>
-        <div className="w-full h-1/5 flex justify-center flex-row hover:bg-gray-100 text-gray-600 font-semibold text-md tracking-wider">
-          <div className="w-1/2 h-full flex justify-between">
-            <div className="w-4/6 self-center pl-5">Class</div>
-            <div className="w-2/6 self-center">D9</div>
-          </div>
-          <div className="w-1/2 self-center text-right pr-5">10700</div>
-        </div>
-        <div className="w-full h-1/5 flex justify-center flex-row hover:bg-gray-100 text-gray-600 font-semibold text-md tracking-wider">
-          <div className="w-1/2 h-full flex justify-between">
-            <div className="w-4/6 self-center pl-5">Class</div>
-            <div className="w-2/6 self-center">D27</div>
-          </div>
-          <div className="w-1/2 self-center text-right pr-5">8999</div>
-        </div>
-        <div className="w-full h-1/5 flex justify-center flex-row hover:bg-gray-100 text-gray-600 font-semibold text-md tracking-wider">
-          <div className="w-1/2 h-full flex justify-between">
-            <div className="w-4/6 self-center pl-5">Class</div>
-            <div className="w-2/6 self-center">Others</div>
-          </div>
-          <div className="w-1/2 self-center text-right pr-5">187650</div>
-        </div> */}
+
+        <Dialog
+          fullWidth={fullWidths}
+          maxWidth={maxWidths}
+          open={opened}
+          onClose={handleClosed}
+        >
+          <DialogContent>
+            {allItemData ? (
+              <TransformWrapper>
+                <TransformComponent>
+                  <img
+                    className="cursor-pointer "
+                    src={allItemData[zoomImage].img}
+                    alt="img not found"
+                  />
+                </TransformComponent>
+              </TransformWrapper>
+            ) : (
+              <>no image found</>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </>
   );

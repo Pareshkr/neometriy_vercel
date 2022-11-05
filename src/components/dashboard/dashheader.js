@@ -5,7 +5,7 @@ import { HiUserCircle } from "react-icons/hi";
 export default function DashHeader() {
   return (
     <>
-      <div className="w-full h-full bg-white pl-4 pt-2 pr-4 flex justify-between">
+      <div className="w-full h-full bg-white pl-4 pt-4 pr-4 flex justify-between">
         <div className="w-1/4 h-full text-2xl font-sans text-gray-600 font-bold tracking-wide">
           Dashboard
         </div>

@@ -87,16 +87,22 @@ export default function Dashboard() {
                 <Calender setParentdata={setParentdata} />
               </div>
             </div>
-            <div className="w-full h-2/5 flex items-stretch border border-black space-between space-x-3">
+            <div className="w-full h-2/5 flex items-stretch space-between space-x-3">
               <div className="w-2/4 h-full">
                 <LineChart data={totalVolume}/>
               </div>
-              <div className="w-1/4 h-full pl-3">
+              <div className="w-2/4 h-full rounded-md shadow-md bg-white">
+              <ClassVolume data={totalVolume}/>
+              </div>
+
+
+
+              {/* <div className="w-1/4 h-full pl-3">
                 <ClassVolume data={totalVolume}/>
               </div>
               <div className="w-1/4 h-full self-end pl-3">
                 <AnomalyImages />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
