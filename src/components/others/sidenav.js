@@ -1,26 +1,63 @@
-import React from "react";
+import React,{ useState, useEffect } from "react";
 import { VscGraphLine, VscProject } from "react-icons/vsc";
+import { TbScan } from "react-icons/tb";
+import { CgFileDocument } from "react-icons/cg";
+import { useLocation } from "react-router-dom";
 
-import { MdOutlineContactPage, MdOutlineDocumentScanner } from "react-icons/md";
+import {
+  MdOutlineContactPage,
+  MdOutlineDocumentScanner,
+  MdOutlineSpaceDashboard,
+} from "react-icons/md";
 import { NavLink } from "react-router-dom";
-import Logo from "../image/NeoPhyte_logo.gif";
+import Logo from "../image/neo_metry.gif";
+
 
 export default function SideNav() {
+
+  const [activeNav,setActiveNav] = useState(0)
+  let location = useLocation();
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/dashboard" : 
+      setActiveNav(1);
+      break;
+      case "/volumetric":
+        setActiveNav(2);
+        break;
+        default:
+          setActiveNav(0);
+    }
+  },[activeNav])
+  console.log("activeNav", activeNav)
   return (
     <>
       <div className="w-2/12 shadow-md bg-white h-screen  ">
-        <div className="h-16 shadow-sm">
+        <div className="flex justify-center">
+         <div className="w-4/6">
+          <NavLink to={`/dashboard`}>
+            <img src={Logo} alt="Logo" />
+          </NavLink>
+          </div>
+        </div>
+        {/* <div className="h-20 flex flex-col justify-center pt-2 text-gray-600">
+          <span className="text-3xl self-center font-bold">NEOMETRIC</span>
+          <span className="w-7/12 h-2/6 self-center pl-16 text-[10px]">Powered by NEOPHYTE</span>
+
+
+
+
           <div className="flex justify-center pt-2">
             <img src={Logo} className="w-5/6" alt="Logo" />
           </div>
-        </div>
-        <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between ">
-          <div className="flex flex-col mt-3 py-4 space-y-2  border-b-2 border-white-200">
+        </div> */}
+        <div className="w-full h-3/6 overflow-y-auto overflow-x-hidden flex flex-col">
+          <div className="w-11/12 self-end flex flex-col mt-3 py-4 space-y-2  border-b-2 border-white-200">
             <div>
               <NavLink to={`/dashboard`}>
-                <p className="relative flex flex-row items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-gray-200 hover:w-96 hover:z-20  focus:bg-blue-500 focus:text-white pr-6 ">
+                <p className={`relative flex flex-row items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-gray-300 hover:w-96 hover:z-20 hover:rounded-lg focus:bg-blue-500 focus:text-white pr-6 ${activeNav === 1 ? "text-white bg-gray-200 rounded-l-lg " : ""}`}>
                   <span className="inline-flex justify-center items-center ml-2 ">
-                    <VscGraphLine className="text-purple-800 font-medium	 text-md" />
+                    <MdOutlineSpaceDashboard className="text-gray-600 font-medium	 text-lg" />
                   </span>
                   <span className="ml-3 text-sm text-md font-sans	font-medium	 text-gray-600 tracking-wide truncate">
                     Dashboard
@@ -31,9 +68,9 @@ export default function SideNav() {
 
             <div>
               <NavLink to={`/volumetric`}>
-                <p className="relative flex flex-row   items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-purple-200 hover:w-96 hover:z-20  dark:hover:border-gray-800 focus:bg-blue-500 focus:text-white pr-6 ">
+                <p className={`relative flex flex-row items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-gray-300 hover:w-96 hover:z-20 hover:rounded-lg focus:bg-blue-500 focus:text-white pr-6 ${activeNav === 2 ? "text-white bg-gray-200 rounded-l-lg " : ""}`}>
                   <span className="inline-flex justify-center items-center ml-2">
-                    <VscProject className="text-purple-800 font-medium	 text-md" />
+                    <TbScan className="text-gray-600 font-medium	 text-lg" />
                   </span>
                   <span className="ml-3 text-sm text-md font-sans	font-medium	 text-gray-600 tracking-wide truncate">
                     Volumetric
@@ -68,21 +105,21 @@ export default function SideNav() {
           
             </div> */}
           </div>
-          <div className="mb-5">
-            <div className="flex flex-col  py-4 space-y-2">
-              <p className="relative flex flex-row items-center h-9 px-6 focus:outline-none  dark:hover:bg-gray-300 hover:bg-purple-200  text-white hover:text-white  border-transparent dark:hover:border-gray-800 focus:bg-blue-500 focus:text-white pr-6">
+          <div className="mb-5 flex flex-col">
+            <div className="w-11/12 self-end flex flex-col py-4 space-y-2">
+              <p className="relative flex flex-row items-center h-9 px-6 focus:outline-none  dark:hover:bg-gray-300 hover:bg-purple-200  text-white hover:text-white  border-transparent dark:hover:border-gray-800 focus:bg-blue-500 hover:rounded-l-lg focus:text-white pr-6">
                 <span className="inline-flex justify-center items-center ml-2">
-                  <MdOutlineDocumentScanner className="text-purple-800 font-medium text-md" />
+                  <CgFileDocument className="text-gray-600 font-medium text-lg" />
                 </span>
-                <span className="ml-3 text-sm text-gray-600 font-sans text-md	font-medium	 tracking-wide truncate">
+                <span className="ml-3 text-gray-600 font-sans text-sm	font-medium	 tracking-wide truncate">
                   Documentation
                 </span>
               </p>
             </div>
-            <div>
-              <p className="relative flex flex-row items-center  h-9 px-6 focus:outline-none  dark:hover:bg-gray-300 hover:bg-purple-200  text-white hover:text-white  border-transparent  dark:hover:border-gray-800 focus:bg-blue-500 focus:text-white pr-6">
+            <div className="w-11/12 self-end flex flex-col space-y-2">
+              <p className="relative flex flex-row items-center  h-9 px-6 focus:outline-none  dark:hover:bg-gray-300 hover:bg-purple-200  text-white hover:text-white  border-transparent  dark:hover:border-gray-800 hover:rounded-l-lg focus:bg-blue-500 focus:text-white pr-6">
                 <span className="inline-flex justify-center items-center ml-2">
-                  <MdOutlineContactPage className="text-purple-800 font-medium text-md" />
+                  <MdOutlineContactPage className="text-gray-600 font-medium text-lg" />
                 </span>
                 <span className="ml-3 text-sm text-md font-sans	font-medium	 text-gray-600 tracking-wide truncate">
                   Contact Us
@@ -92,7 +129,7 @@ export default function SideNav() {
           </div>
           <hr />
 
-          <div className="  absolute bottom-0     ">
+          <div className=" absolute bottom-0  pl-5   ">
             <div className="px-4  pt-5">
               <div className="">
                 <p className="mt-auto relative flex flex-row items-center focus:outline-none hover:bg-purple-200  font-sans dark:hover:bg-gray-300 text-gray-700   border-transparent  dark:hover:border-gray-800 focus:bg-blue-500 focus:text-white pr-6">

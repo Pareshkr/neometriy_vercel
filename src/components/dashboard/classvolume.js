@@ -169,23 +169,49 @@ export default function ClassVolume(props) {
       <div className="w-full h-full rounded-md shadow-md flex flex-col justify-between bg-white">
         <div className="w-full h-1/6 flex border-b-2">
           <div className="self-center pl-5 text-gray-600 font-semibold text-lg ">
-            Data by class (cm<sup>3</sup>)
+            Time series data
           </div>
         </div>
 
         <div className="w-full h-4/6 container overflow-x-auto">
           <div className="container overflow-x-auto">
             <table className="w-full sm:bg-white rounded-lg">
-              <thead className="w-full h-10 bg-violet-500 text-white font-bold text-md tracking-wider">
+              <thead className="w-full h-10 bg-emerald-500 text-white font-bold text-md tracking-wider">
                 <tr className="">
-                  <th className="pl-3">Class</th>
-                  <th className="">Time</th>
-                  <th className="">Length</th>
-                  <th className="">Breadth</th>
-                  <th className="">Height</th>
-                  <th className="">Weight</th>
-                  <th className="">Volume</th>
-                  <th className="">Image</th>
+                  <th className="pl-3 pb-6">Class</th>
+                  <th className="">
+                    <span>Timestamp</span>
+                    <br />
+                    <span className="text-sm">(dd/mm hh:mm:ss)</span>
+                  </th>
+                  <th className="">
+                    <span>Length</span>
+                    <br />
+                    <span className="text-sm">(cm)</span>
+                  </th>
+                  <th className="">
+                    <span>Breadth</span>
+                    <br />
+                    <span className="text-sm">(cm)</span>
+                  </th>
+                  <th className="">
+                    <span>Height</span>
+                    <br />
+                    <span className="text-sm">(cm)</span>
+                  </th>
+                  <th className="">
+                    <span>Weight</span>
+                    <br />
+                    <span className="text-sm">(kg)</span>
+                  </th>
+                  <th className="">
+                    <span>Volume</span>
+                    <br />
+                    <span className="text-sm">
+                      (cm<sup>3</sup>)
+                    </span>
+                  </th>
+                  <th className="pb-6">Image</th>
                 </tr>
               </thead>
               {data ? (
@@ -202,7 +228,25 @@ export default function ClassVolume(props) {
                     {/* <td>27/10 04:34:08</td> */}
                     {data.data.box_wise_lbh.length > 0 ? (
                       <td className="p-2">
-                        {data.data.box_wise_lbh[0].timestamps}
+                        {new Date(
+                          data.data.box_wise_lbh[0].timestamps
+                        ).getDate() +
+                          "/" +
+                          new Date(
+                            data.data.box_wise_lbh[0].timestamps
+                          ).getMonth() +
+                          " " +
+                          new Date(
+                            data.data.box_wise_lbh[0].timestamps
+                          ).getHours() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[0].timestamps
+                          ).getMinutes() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[0].timestamps
+                          ).getSeconds()}
                       </td>
                     ) : (
                       <td className="p-2"></td>
@@ -264,7 +308,25 @@ export default function ClassVolume(props) {
                     {/* <td>27/10 04:34:08</td> */}
                     {data.data.box_wise_lbh.length > 0 ? (
                       <td className="p-2">
-                        {data.data.box_wise_lbh[1].timestamps}
+                        {new Date(
+                          data.data.box_wise_lbh[1].timestamps
+                        ).getDate() +
+                          "/" +
+                          new Date(
+                            data.data.box_wise_lbh[1].timestamps
+                          ).getMonth() +
+                          " " +
+                          new Date(
+                            data.data.box_wise_lbh[1].timestamps
+                          ).getHours() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[1].timestamps
+                          ).getMinutes() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[1].timestamps
+                          ).getSeconds()}
                       </td>
                     ) : (
                       <td className="p-2"></td>
@@ -326,7 +388,25 @@ export default function ClassVolume(props) {
                     {/* <td>27/10 04:34:08</td> */}
                     {data.data.box_wise_lbh.length > 0 ? (
                       <td className="p-2">
-                        {data.data.box_wise_lbh[2].timestamps}
+                        {new Date(
+                          data.data.box_wise_lbh[2].timestamps
+                        ).getDate() +
+                          "/" +
+                          new Date(
+                            data.data.box_wise_lbh[2].timestamps
+                          ).getMonth() +
+                          " " +
+                          new Date(
+                            data.data.box_wise_lbh[2].timestamps
+                          ).getHours() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[2].timestamps
+                          ).getMinutes() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[2].timestamps
+                          ).getSeconds()}
                       </td>
                     ) : (
                       <td className="p-2"></td>
@@ -388,7 +468,25 @@ export default function ClassVolume(props) {
                     {/* <td>27/10 04:34:08</td> */}
                     {data.data.box_wise_lbh.length > 0 ? (
                       <td className="p-2">
-                        {data.data.box_wise_lbh[3].timestamps}
+                        {new Date(
+                          data.data.box_wise_lbh[3].timestamps
+                        ).getDate() +
+                          "/" +
+                          new Date(
+                            data.data.box_wise_lbh[3].timestamps
+                          ).getMonth() +
+                          " " +
+                          new Date(
+                            data.data.box_wise_lbh[3].timestamps
+                          ).getHours() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[3].timestamps
+                          ).getMinutes() +
+                          ":" +
+                          new Date(
+                            data.data.box_wise_lbh[3].timestamps
+                          ).getSeconds()}
                       </td>
                     ) : (
                       <td className="p-2"></td>
@@ -467,16 +565,42 @@ export default function ClassVolume(props) {
                 <div className="w-full h-5/6 container overflow-x-auto">
                   <div className="container overflow-x-auto">
                     <table className="w-full sm:bg-white rounded-lg">
-                      <thead className="w-full h-10 bg-violet-500 text-white font-bold text-md tracking-wider">
+                      <thead className="w-full h-10 bg-emerald-500 text-white font-bold text-md tracking-wider">
                         <tr className="">
-                          <th className="">Class</th>
-                          <th className="">Time</th>
-                          <th className="">Length</th>
-                          <th className="">Breadth</th>
-                          <th className="">Height</th>
-                          <th className="">Weight</th>
-                          <th className="">Volume</th>
-                          <th className="">image</th>
+                          <th className="pl-3 pb-6">Class</th>
+                          <th className="">
+                            <span>Timestamp</span>
+                            <br />
+                            <span className="text-sm">(dd/mm hh:mm:ss)</span>
+                          </th>
+                          <th className="">
+                            <span>Length</span>
+                            <br />
+                            <span className="text-sm">(cm)</span>
+                          </th>
+                          <th className="">
+                            <span>Breadth</span>
+                            <br />
+                            <span className="text-sm">(cm)</span>
+                          </th>
+                          <th className="">
+                            <span>Height</span>
+                            <br />
+                            <span className="text-sm">(cm)</span>
+                          </th>
+                          <th className="">
+                            <span>Weight</span>
+                            <br />
+                            <span className="text-sm">(kg)</span>
+                          </th>
+                          <th className="">
+                            <span>Volume</span>
+                            <br />
+                            <span className="text-sm">
+                              (cm<sup>3</sup>)
+                            </span>
+                          </th>
+                          <th className="pb-6">Image</th>
                         </tr>
                       </thead>
                       <tbody className="text-center font-semibold divide-y">
@@ -487,15 +611,22 @@ export default function ClassVolume(props) {
                               key={id}
                             >
                               <td className="p-2">{val.class_name}</td>
-                              <td>{val.timestamps}</td>
-                              <td>{val.l.toFixed(2)} cm</td>
-                              <td>{val.b.toFixed(2)} cm</td>
-                              <td>{val.h.toFixed(2)} cm</td>
-                              <td>12 kg</td>
                               <td>
-                                {(val.l * val.b * val.h).toFixed(2)} cm
-                                <sup>3</sup>
+                                {new Date(val.timestamps).getDate() +
+                                  "/" +
+                                  new Date(val.timestamps).getMonth() +
+                                  " " +
+                                  new Date(val.timestamps).getHours() +
+                                  ":" +
+                                  new Date(val.timestamps).getMinutes() +
+                                  ":" +
+                                  new Date(val.timestamps).getSeconds()}
                               </td>
+                              <td>{val.l.toFixed(2)}</td>
+                              <td>{val.b.toFixed(2)}</td>
+                              <td>{val.h.toFixed(2)}</td>
+                              <td>12</td>
+                              <td>{(val.l * val.b * val.h).toFixed(2)}</td>
                               <td className="flex pt-2 justify-center text-blue-600">
                                 <button
                                   type="button"
@@ -539,6 +670,7 @@ export default function ClassVolume(props) {
                         ) : (
                           <>
                             <tr>
+                              <td>0</td>
                               <td>0</td>
                               <td>0</td>
                               <td>0</td>

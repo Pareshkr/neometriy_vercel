@@ -81,15 +81,15 @@ export default function DonutChart(props) {
         },
         labels: [],
         legend: {
-          show: true,
-          position: "bottom",
-          offsetY: 0,
-          height: 20,
-          width: 370,
-          customLegendItems: ["NO DATA"],
-          onItemHover: {
-            highlightDataSeries: true,
-          },
+          // show: true,
+          // position: "bottom",
+          // offsetY: 0,
+          // height: 0,
+          // width: 0,
+          // customLegendItems: ["NO DATA"],
+          // onItemHover: {
+          //   highlightDataSeries: true,
+          // },
         },
       },
     };
@@ -128,11 +128,11 @@ export default function DonutChart(props) {
         },
         labels: ["Others", greatestNumber[0], seconedNumber[0], thirdNumber[0]],
         legend: {
-          show: false,
-          position: "bottom",
-          offsetY: 0,
-          height: 20,
-          width: 370,
+          show: true,
+          position: "right",
+          offsetY: 40,
+          height: 250,
+          width: 100,
           customLegendItems: [
             "Others",
             greatestNumber[0],
@@ -151,7 +151,7 @@ export default function DonutChart(props) {
     <>
       <div className="w-full h-full rounded-md  shadow-md bg-white text-center">
         <div className="w-full h-1/6 flex font-semibold text-lg text-gray-600 pl-5 border-b-2">
-          <span className="self-center">Count by class</span>
+          <span className="self-center">Top classes</span>
         </div>
         <div className="w-full h-5/6 pt-3">
           <Chart
@@ -159,7 +159,7 @@ export default function DonutChart(props) {
             series={donutChart.series.data}
             type="radialBar"
             height={250}
-            position="top"
+            position="left"
           />
         </div>
       </div>
