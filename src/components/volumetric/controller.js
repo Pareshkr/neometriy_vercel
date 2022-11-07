@@ -2,10 +2,12 @@ import React, {useState} from "react";
 import axios from "axios";
 import Switch from "@mui/material/Switch";
 
-export default function Controller() {
+export default function Controller({ onClick }) {
   const [checked_one, setChecked_one] = useState(false);
   const [checked_two, setChecked_two] = useState(false);
   const [checked_three, setChecked_three] = useState(false);
+
+  
 
   const handleChange_one = (event) => {
     setChecked_one(event.target.checked);
@@ -80,7 +82,7 @@ export default function Controller() {
           </div>
         </div>
         <div className="w-full h-2/4 flex flex-row justify-center space-x-16">
-          <button className="w-4/12 bg-emerald-600 h-3/6 self-center text-white font-bold text-md rounded-lg ">
+          <button onClick={onClick} className="w-4/12 bg-emerald-600 h-3/6 self-center text-white font-bold text-md rounded-lg ">
             START
           </button>
           <button
