@@ -65,6 +65,7 @@ export default function DetectedResult() {
   // var socket = io(SERVER);
   // console.log("socket", socket)
   const [lbhData, setLbhData] = useState(false);
+  const [cloneLbh, setCloneLbh] = useState([])
 
   useEffect(() => {
     const socket = io("http://127.0.0.1:9990", {
@@ -79,7 +80,9 @@ export default function DetectedResult() {
     socket.on("get_results", (data) => {
       console.log(data);
       setLbhData(data);
-      setChat(oldChats =>[data.data, ...oldChats])
+      setCloneLbh(data.data)
+      setChat(oldChats => [data.data, ...oldChats])
+
     });
   }, []);
 
@@ -96,9 +99,23 @@ export default function DetectedResult() {
   //     })
   // },[])
 
-  // console.log("lbhData", lbhData);
-  // const cloneLbh = { ...lbhData };
-  console.log("cloneLbh", chat);
+  console.log("lbhData", lbhData);
+
+  const copyofCloneArray = [...cloneLbh];
+
+  var allData = [];
+  allData.unshift(copyofCloneArray)
+
+
+  console.log("cloneLbh", allData);
+
+
+
+
+
+  // console.log(result)
+
+
 
   return (
     <>
@@ -123,216 +140,21 @@ export default function DetectedResult() {
               </tr>
             </thead>
             <tbody className="w-full h- text-center font-semibold divide-y">
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
-              <tr>
-                <td className="p-2">D22</td>
-                <td>28.12 cm</td>
-                <td>19.56 cm</td>
-                <td>8.74 cm</td>
-                <td>4.63 kg</td>
-                <td>
-                  22257.51 cm<sup>3</sup>
-                </td>
-              </tr>
+              {chat && (
+                chat.map((val, id) => (
+                  <tr key={id}>
+                    <td className="p-2">{val[4]}</td>
+                    <td>{val[0].toFixed(2)} cm</td>
+                    <td>{val[1].toFixed(2)}cm</td>
+                    <td>{val[2].toFixed(2)} cm</td>
+                    <td>{val[3].toFixed(2)}kg</td>
+                    <td>
+                  {(val[0] * val[1] * val[2]).toFixed(2)} cm<sup>3</sup>
+                    </td>
+                  </tr>
+                ))
+              )}
+
             </tbody>
           </table>
         </div>
@@ -349,9 +171,11 @@ export default function DetectedResult() {
                 </span>
               </div>
               <div className=" w-2/5 h-full flex justify-around">
-                <span className="self-center font-semibold text-large text-white">
-                  D21
-                </span>
+              {lbhData && (
+                  <span className="self-center font-semibold text-large text-white">
+                    {lbhData.data[4]}
+                  </span>
+                )}
               </div>
             </div>
             <div className="m-2.5 h-1/4 flex flex-row space-x-2 rounded-md shadow-md bg-teal-600 ">
@@ -366,9 +190,9 @@ export default function DetectedResult() {
               <div className="w-3/5 h-full flex justify-around">
                 {lbhData && (
                   <span className="self-center font-semibold text-large text-white">
-                    {lbhData.data[0] *
+                    {(lbhData.data[0] *
                       lbhData.data[1] *
-                      lbhData.data[2].toFixed(2)}
+                      lbhData.data[2]).toFixed(2)} cm<sup>3</sup>
                   </span>
                 )}
               </div>
@@ -386,7 +210,7 @@ export default function DetectedResult() {
               <div className="w-3/5 h-full flex justify-around">
                 {lbhData && (
                   <span className="self-center font-semibold text-large text-white">
-                    {lbhData.data[3].toFixed(2)}cm
+                    {lbhData.data[3].toFixed(2)}kg
                   </span>
                 )}
               </div>
