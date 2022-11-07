@@ -560,7 +560,7 @@ export default function ClassVolume(props) {
             <DialogContent>
               <div className="w-full h-full flex flex-col space-y-3 p-2">
                 <div className="w-full h-1/6 pb-2 text-gray-600 font-semibold text-lg">
-                  All Classes with total data
+                  Time series data
                 </div>
                 <div className="w-full h-5/6 container overflow-x-auto">
                   <div className="container overflow-x-auto">

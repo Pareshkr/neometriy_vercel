@@ -3,9 +3,9 @@ import axios from "axios";
 import Switch from "@mui/material/Switch";
 
 export default function Controller({ onClick }) {
-  const [checked_one, setChecked_one] = useState(false);
-  const [checked_two, setChecked_two] = useState(false);
-  const [checked_three, setChecked_three] = useState(false);
+  const [checked_one, setChecked_one] = useState(true);
+  const [checked_two, setChecked_two] = useState(true);
+  const [checked_three, setChecked_three] = useState(true);
 
   
 
