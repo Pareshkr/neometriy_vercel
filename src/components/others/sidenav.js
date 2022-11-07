@@ -8,7 +8,7 @@ import Logo from "../image/NeoPhyte_logo.gif";
 export default function SideNav() {
   return (
     <>
-      <div className="w-1/6 shadow-md bg-white h-screen  ">
+      <div className="w-2/12 shadow-md bg-white h-screen  ">
         <div className="h-16 shadow-sm">
           <div className="flex justify-center pt-2">
             <img src={Logo} className="w-5/6" alt="Logo" />

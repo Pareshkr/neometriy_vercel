@@ -79,13 +79,13 @@ export default function Controller() {
             </div>
           </div>
         </div>
-        <div className="w-full h-2/4 flex flex-row justify-center space-x-2">
-          <button className="w-5/12 bg-green-700 h-10 self-center text-white font-bold text-md rounded-lg ">
+        <div className="w-full h-2/4 flex flex-row justify-center space-x-16">
+          <button className="w-4/12 bg-emerald-600 h-3/6 self-center text-white font-bold text-md rounded-lg ">
             START
           </button>
           <button
             onClick={onSubmitStop}
-            className="w-5/12 bg-red-700 h-10 self-center text-white font-bold text-md rounded-lg "
+            className="w-4/12 bg-rose-600 h-3/6 self-center text-white font-bold text-md rounded-lg "
           >
             STOP
           </button>

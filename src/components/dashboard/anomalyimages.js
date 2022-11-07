@@ -14,7 +14,6 @@ import D6 from "../image/anomalyDummy/D6.jpg";
 import D7 from "../image/anomalyDummy/D7.jpg";
 import D10 from "../image/anomalyDummy/D10.jpg";
 import D15 from "../image/anomalyDummy/D15.jpg";
-import D21 from "../image/anomalyDummy/D21.jpg";
 import D18 from "../image/anomalyDummy/D18.jpg";
 import D27 from "../image/anomalyDummy/D27.jpg";
 import {
