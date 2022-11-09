@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { VscGraphLine, VscProject } from "react-icons/vsc";
 import { TbScan } from "react-icons/tb";
 import { CgFileDocument } from "react-icons/cg";
@@ -12,32 +12,30 @@ import {
 import { NavLink } from "react-router-dom";
 import Logo from "../image/neo_metry.gif";
 
-
 export default function SideNav() {
-
-  const [activeNav,setActiveNav] = useState(0)
+  const [activeNav, setActiveNav] = useState(0);
   let location = useLocation();
   useEffect(() => {
     switch (location.pathname) {
-      case "/dashboard" : 
-      setActiveNav(1);
-      break;
+      case "/dashboard":
+        setActiveNav(1);
+        break;
       case "/volumetric":
         setActiveNav(2);
         break;
-        default:
-          setActiveNav(0);
+      default:
+        setActiveNav(0);
     }
-  },[activeNav])
-  console.log("activeNav", activeNav)
+  }, [activeNav]);
+  console.log("activeNav", activeNav);
   return (
     <>
       <div className="w-2/12 shadow-md bg-white h-screen  ">
         <div className="flex justify-center">
-         <div className="w-4/6">
-          <NavLink to={`/dashboard`}>
-            <img src={Logo} alt="Logo" />
-          </NavLink>
+          <div className="w-4/6">
+            <NavLink to={`/dashboard`}>
+              <img src={Logo} alt="Logo" />
+            </NavLink>
           </div>
         </div>
         {/* <div className="h-20 flex flex-col justify-center pt-2 text-gray-600">
@@ -55,9 +53,19 @@ export default function SideNav() {
           <div className="w-11/12 self-end flex flex-col mt-3 py-4 space-y-2  border-b-2 border-white-200">
             <div>
               <NavLink to={`/dashboard`}>
-                <p className={`relative flex flex-row items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-gray-300 hover:w-96 hover:z-20 hover:rounded-lg focus:bg-blue-500 focus:text-white pr-6 ${activeNav === 1 ? "text-white bg-gray-200 rounded-l-lg " : ""}`}>
+                <p
+                  className={`relative flex flex-row items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-gray-300 hover:w-96 hover:z-20 hover:rounded-lg focus:bg-blue-500 focus:text-white pr-6 ${
+                    activeNav === 1
+                      ? "text-white bg-gray-200 rounded-l-lg "
+                      : ""
+                  }`}
+                >
                   <span className="inline-flex justify-center items-center ml-2 ">
-                    <MdOutlineSpaceDashboard className="text-gray-600 font-medium	 text-lg" />
+                    <MdOutlineSpaceDashboard
+                      className={`text-gray-600 font-medium text-lg ${
+                        activeNav === 1 ? "text-emerald-500" : ""
+                      }`}
+                    />
                   </span>
                   <span className="ml-3 text-sm text-md font-sans	font-medium	 text-gray-600 tracking-wide truncate">
                     Dashboard
@@ -68,9 +76,19 @@ export default function SideNav() {
 
             <div>
               <NavLink to={`/volumetric`}>
-                <p className={`relative flex flex-row items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-gray-300 hover:w-96 hover:z-20 hover:rounded-lg focus:bg-blue-500 focus:text-white pr-6 ${activeNav === 2 ? "text-white bg-gray-200 rounded-l-lg " : ""}`}>
+                <p
+                  className={`relative flex flex-row items-center h-9 px-6 focus:outline-none dark:hover:bg-gray-300 text-white hover:bg-gray-300 hover:w-96 hover:z-20 hover:rounded-lg focus:bg-blue-500 focus:text-white pr-6 ${
+                    activeNav === 2
+                      ? "text-white bg-gray-200 rounded-l-lg "
+                      : ""
+                  }`}
+                >
                   <span className="inline-flex justify-center items-center ml-2">
-                    <TbScan className="text-gray-600 font-medium	 text-lg" />
+                    <TbScan
+                      className={`text-gray-600 font-medium text-lg ${
+                        activeNav === 2 ? "text-emerald-500" : ""
+                      }`}
+                    />
                   </span>
                   <span className="ml-3 text-sm text-md font-sans	font-medium	 text-gray-600 tracking-wide truncate">
                     Volumetric
