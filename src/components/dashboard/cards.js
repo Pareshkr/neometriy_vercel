@@ -58,7 +58,7 @@ export default function Cards(props) {
               ) : (
                 <>
                   <div className="w-full h-1/2 text-left font-bold text-2xl">
-                    12
+                    16
                   </div>
                 </>
               )}

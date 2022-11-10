@@ -267,13 +267,13 @@ export default function ClassVolume(props) {
                       <td className="p-2"></td>
                     )}
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">12</td>
+                      <td className="p-2">{data.data.box_wise_lbh[0].weight}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
 
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">1338.48</td>
+                      <td className="p-2">{(data.data.box_wise_lbh[0].l*data.data.box_wise_lbh[0].b*data.data.box_wise_lbh[0].h).toFixed(2)}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
@@ -347,13 +347,13 @@ export default function ClassVolume(props) {
                       <td className="p-2"></td>
                     )}
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">12</td>
+                      <td className="p-2">{data.data.box_wise_lbh[1].weight}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
 
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">1338.48</td>
+                      <td className="p-2">{(data.data.box_wise_lbh[1].l*data.data.box_wise_lbh[1].b*data.data.box_wise_lbh[1].h).toFixed(2)}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
@@ -427,13 +427,13 @@ export default function ClassVolume(props) {
                       <td className="p-2"></td>
                     )}
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">12</td>
+                      <td className="p-2">{data.data.box_wise_lbh[2].weight}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
 
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">1338.48</td>
+                      <td className="p-2">{(data.data.box_wise_lbh[2].l*data.data.box_wise_lbh[2].b*data.data.box_wise_lbh[2].h).toFixed(2)}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
@@ -507,13 +507,13 @@ export default function ClassVolume(props) {
                       <td className="p-2"></td>
                     )}
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">12</td>
+                      <td className="p-2">{data.data.box_wise_lbh[3].weight}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
 
                     {data.data.box_wise_lbh.length > 0 ? (
-                      <td className="p-2">1338.48</td>
+                      <td className="p-2">{(data.data.box_wise_lbh[3].l*data.data.box_wise_lbh[3].b*data.data.box_wise_lbh[3].h).toFixed(2)}</td>
                     ) : (
                       <td className="p-2"></td>
                     )}
@@ -625,7 +625,7 @@ export default function ClassVolume(props) {
                               <td>{val.l.toFixed(2)}</td>
                               <td>{val.b.toFixed(2)}</td>
                               <td>{val.h.toFixed(2)}</td>
-                              <td>12</td>
+                              <td>{val.weight}</td>
                               <td>{(val.l * val.b * val.h).toFixed(2)}</td>
                               <td className="flex pt-2 justify-center text-blue-600">
                                 <button

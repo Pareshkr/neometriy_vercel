@@ -3,11 +3,15 @@ import Chart from "react-apexcharts";
 
 export default function DonutChart(props) {
   const data = props.data;
-  // console.log("doughnut chart data " , data)
+  console.log("doughnut chart data " , data)
   let sortData = "";
+  let totalBoxs="";
   if (data) {
     sortData = data.data.Box_wise;
+    totalBoxs = data.data.totol_box
   }
+  console.log("totalBoxs",totalBoxs)
+ 
   const values = Object.values(sortData);
 
   const sum = values.reduce((accumulator, value) => {
@@ -18,21 +22,22 @@ export default function DonutChart(props) {
   console.log("Total", totalBox);
 
   const sortedData = Object.entries(sortData).sort((a, b) => b[1] - a[1]);
-  // console.log("sortedData", sortedData)
+  
   const greatestNumber = sortedData[0];
 
   const seconedNumber = sortedData[1];
   const thirdNumber = sortedData[2];
 
+  console.log("sortedData", greatestNumber)
+  console.log("sortedData", seconedNumber)
+  console.log("sortedData", thirdNumber)
+
   let others=""
 
-  // if(sortData.length<0) {
-  //    others = totalBox - (greatestNumber[1]+seconedNumber[1]+thirdNumber[1])
-  console.log(sortedData.length > 0)
-  // }
+ 
   if(sortedData.length > 0) {
     console.log("tuire")
-    others =( (totalBox- (greatestNumber[1]+seconedNumber[1]+thirdNumber[1]) ) * 100) /totalBox
+    others =( (totalBoxs - (greatestNumber[1]+seconedNumber[1]+thirdNumber[1]) ) * 100) /totalBoxs
   }
   console.log("others value  ", others)
  
@@ -95,8 +100,11 @@ export default function DonutChart(props) {
     };
   } else {
     donutChart = {
+      // series: {
+      //   data: [others.toFixed(2), ((greatestNumber[1] *100)/totalBox).toFixed(2), ((seconedNumber[1]*100)/totalBox).toFixed(2), ((thirdNumber[1]*100)/totalBox).toFixed(2)],
+      // },
       series: {
-        data: [others.toFixed(2), ((greatestNumber[1] *100)/totalBox).toFixed(2), ((seconedNumber[1]*100)/totalBox).toFixed(2), ((thirdNumber[1]*100)/totalBox).toFixed(2)],
+        data: [others.toFixed(2), ((greatestNumber[1] *100)/totalBoxs).toFixed(2), ((seconedNumber[1]*100)/totalBoxs).toFixed(2), ((thirdNumber[1]*100)/totalBoxs).toFixed(2)],
       },
       options: {
         chart: {
@@ -120,7 +128,7 @@ export default function DonutChart(props) {
                 label: "Total",
                 formatter: function (w) {
                   // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                  return totalBox;
+                  return totalBoxs;
                 },
               },
             },

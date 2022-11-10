@@ -48,115 +48,115 @@ export default function BarChart(props) {
           },
           {
             x: "D8",
-            y: 0,
+            y: boxData.D8,
           },
           {
             x: "D9",
-            y: 0,
+            y: boxData.D9,
           },
           {
             x: "D10",
-            y: 0,
+            y: boxData.D10,
           },
           {
             x: "D11",
-            y: 0,
+            y: boxData.D11,
           },
           {
             x: "D12",
-            y: 0,
+            y: boxData.D12,
           },
           {
             x: "D13",
-            y: 0,
+            y: boxData.D13,
           },
           {
             x: "D14",
-            y: 0,
+            y: boxData.D14,
           },
           {
             x: "D15",
-            y: 0,
+            y: boxData.D15,
           },
           {
             x: "D16",
-            y: 0,
+            y: boxData.D16,
           },
           {
             x: "D17",
-            y: 0,
+            y: boxData.D17,
           },
           {
             x: "D18",
-            y: 0,
+            y: boxData.D18,
           },
           {
             x: "D19",
-            y: 0,
+            y: boxData.D19,
           },
           {
             x: "D20",
-            y: 0,
+            y: boxData.D20,
           },
           {
             x: "D21",
-            y: 0,
+            y: boxData.D21,
           },
           {
             x: "D22",
-            y: 0,
+            y: boxData.D22,
           },
           {
             x: "D23",
-            y: 0,
+            y: boxData.D23,
           },
           {
             x: "D24",
-            y: 0,
+            y: boxData.D24,
           },
           {
             x: "D25",
-            y: 0,
+            y: boxData.D25,
           },
           {
             x: "D26",
-            y: 0,
+            y: boxData.D26,
           },
           {
             x: "D27",
-            y: 0,
+            y: boxData.D27,
           },
           {
             x: "D28",
-            y: 0,
+            y: boxData.D28,
           },
           {
             x: "D29",
-            y: 0,
+            y: boxData.D29,
           },
           {
             x: "D30",
-            y: 0,
+            y: boxData.D30,
           },
           {
             x: "D31",
-            y: 0,
+            y: boxData.D31,
           },
           {
             x: "D32",
-            y: 0,
+            y: boxData.D32,
           },
           {
             x: "D33",
-            y: 0,
+            y: boxData.D33,
           },
           {
             x: "D34",
-            y: 0,
+            y: boxData.D34,
           },
           {
             x: "D35",
-            y: 0,
+            y: boxData.D35,
           },
         ],
       },
@@ -218,7 +218,8 @@ export default function BarChart(props) {
             options={barGraph.options}
             series={barGraph.series}
             type="bar"
-            height={240}
+            width={755}
+            height={245}
           />
         </div>
       </div>
