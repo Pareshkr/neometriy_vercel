@@ -16,7 +16,7 @@ export default function Dashboard() {
   const [card, setCard] = useState(false)
 
   const[ totalVolume, setTotalVolume] =  useState(false)
-  const url = "http://localhost:8080"
+  const url = "http://216.48.181.202:9191"
   // APi integration for cards and bar chart
   useEffect(() => {
     async function getFullnessPercentage() {

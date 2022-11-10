@@ -218,7 +218,7 @@ export default function BarChart(props) {
             options={barGraph.options}
             series={barGraph.series}
             type="bar"
-            width={755}
+            // width={755}
             height={245}
           />
         </div>
